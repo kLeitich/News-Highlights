@@ -1,1 +1,29 @@
-<h1>{{message}}</h1>
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title>News highligts</title>
+        {% endif %} -->
+    </head>
+    <body>
+    {% block content%}
+        <div class="container">
+            <h2>News sources</h2>
+            <div class="row" >{% for news_source in sources %}
+                <div class="col-md-3">
+                    
+                   <h3>{{news_source.name}}</h3>
+                   <p>{{news_source.description}}</p>
+                   <a href="{{news_source.url}}"><button>Read more</button></a>
+                    
+                </div>{% endfor %}
+            </div >
+        </div>
+    {% endblock %}
+    </body>
+</html>
