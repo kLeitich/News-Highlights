@@ -1,3 +1,4 @@
+from email import message
 from flask import render_template
 from app import app
 
@@ -6,4 +7,4 @@ def index():
     '''
     view root page function
     '''
-    return render_template('index.html')
+    return render_template('index.html',message=message)
