@@ -1,4 +1,4 @@
-#!/home/moringa/Desktop/News-Highlights/virtual/bin/python3
+#!/home/moringa/Documents/python-flask/news/virtual/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
