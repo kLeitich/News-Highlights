@@ -1,3 +1,4 @@
+from turtle import title
 from app import app
 import urllib.request,json
 from .models import news,article
@@ -58,3 +59,47 @@ def process_results(news_list):
 
     return news_results
 
+def get_articles():
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_article_url = article_url.format(api_key)
+
+    with urllib.request.urlopen(get_article_url) as url:
+        get_article_data = url.read()
+        get_article_response = json.loads(get_article_data)
+
+        article_results = None
+
+        if get_article_response['article']:
+            article_results_list = get_article_response['article']
+            article_results = process_article_results(article_results_list)
+
+
+    return article_results
+
+def process_article_results(article_list):
+    '''
+    Function  that processes the movie result and transform them to a list of Objects
+
+    Args:
+        movie_list: A list of dictionaries that contain movie details
+
+    Returns :
+        movie_results: A list of movie objects
+    '''
+    article_results = []
+    for article_item in article_list:
+        title = article_item.get('title')
+        name = article_item.get('name')
+        description = article_item.get('description')
+        url = article_item.get('url')
+        urlToImage = article_item.get('urlToImage')
+        date = article_item.get('publishedAt')
+        content = article_item.get('content')
+
+        if url:
+            article_object = News(title,name,description,url,urlToImage,date,content)
+            article_results.append(article_object)
+
+    return article_results
