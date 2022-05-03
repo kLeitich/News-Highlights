@@ -3,7 +3,7 @@ from app import app
 import urllib.request,json
 from .models import news,article
 
-News=news.News
+NewsSource=news.NewsSource
 Article = article.Article
 
 # getting api key
@@ -54,7 +54,7 @@ def process_results(news_list):
         country = news_item.get('country')
 
         if url:
-            news_object = News(id,name,description,url,category,language,country)
+            news_object = NewsSource(id,name,description,url,category,language,country)
             news_results.append(news_object)
 
     return news_results
@@ -99,7 +99,8 @@ def process_article_results(article_list):
         content = article_item.get('content')
 
         if url:
-            article_object = News(topic,name,description,url,urlToImage,date,content)
+            article_object = Article(topic,name,description,url,urlToImage,date,content)
+            print(article_object)
             article_results.append(article_object)
 
     return article_results
