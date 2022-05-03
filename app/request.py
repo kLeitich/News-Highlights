@@ -1,8 +1,9 @@
 from app import app
 import urllib.request,json
-from .models import news
+from .models import news,article
 
 News=news.News
+Article = article.Article
 
 # getting api key
 
@@ -10,7 +11,7 @@ api_key = app.config['NEWS_API_KEY']
 
 # Getting the news base url
 base_url = app.config["NEWS_API_BASE_URL"]
-
+article_url=app.config["ARTICLE_API_URL"]
 
 def get_news():
     '''
@@ -56,3 +57,4 @@ def process_results(news_list):
             news_results.append(news_object)
 
     return news_results
+

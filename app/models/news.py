@@ -11,3 +11,4 @@ class News:
         self.category = category
         self.langauge = langauge
         self.country = country
+
