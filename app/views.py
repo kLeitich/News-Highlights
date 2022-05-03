@@ -1,10 +1,23 @@
-from email import message
 from flask import render_template
 from app import app
+from .request import get_news
 
-app.route('/')
+# Views
+@app.route('/')
 def index():
+
     '''
-    view root page function
+    View root page function that returns the index page and its data
     '''
-    return render_template('index.html',message=message)
+    news_sources = get_news()
+    print(news_sources)
+    title = 'Home'
+    return render_template('index.html', title = title, sources = news_sources )
+
+@app.route('/news/<news_id>')
+def news(news_id):
+
+    '''
+    View root page function that returns the index page and its data
+    '''
+    return render_template('news.html',id=news_id)
