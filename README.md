@@ -26,7 +26,7 @@ To get the code..
   ```
 2. Move to the folder and install requirements
   ```bash
-  cd streak_news
+  cd news-highlights
   pip install -r requirements.txt
   ```
 3. Exporting Configurations
@@ -42,7 +42,7 @@ To get the code..
   ```
 5. Testing the application
   ```bash
-  python3.8 manage.py test
+  python3.8 run.py test
   ```
 Open the application on your browser `127.0.0.1:5000`.
 
@@ -55,7 +55,7 @@ Open the application on your browser `127.0.0.1:5000`.
 * [Flask](http://flask.pocoo.org/)
 * [Heroku](https://heroku.com)
 
-[Go Back to the top](#News App)
+[Go Back to the top](#News Highlights)
 
 ## Known Bugs
 No known bugs.
