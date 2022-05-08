@@ -1,30 +1,29 @@
-from flask import render_template
-from app import app
-from .request import get_articles, get_news
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..requests import get_news,get_articles
+from ..models import Article,NewsSource
 
-# Views
-
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
     View root page function that returns the index page and its data
     '''
     news_sources = get_news()
-    print(news_sources)
+   
     title = 'Home'
     return render_template('index.html', title = title, sources = news_sources )
 
-@app.route('/trending')
+@main.route('/trending')
 def trending():
 
     '''
     View root page function that returns the index page and its data
     '''
     top_article=get_articles()
-    print(top_article)
+    
     return render_template('trending.html',articles= top_article)
-@app.route('/source')
+@main.route('/source')
 def source():
 
     '''
@@ -34,7 +33,7 @@ def source():
     print(news_sources)
     title = 'Home'
     return render_template('source.html', title = title, sources = news_sources )
-@app.route('/article')
+@main.route('/article')
 def article():
 
     '''
